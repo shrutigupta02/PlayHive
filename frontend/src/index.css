@@ -43,7 +43,7 @@ body {
   left: 0;
   width:100% ;
   padding: 10px;
-
+  z-index: 1;
   color: rgb(240, 240, 240);
   background-color: rgba(10, 10, 10, 0.5);
 }
@@ -93,9 +93,20 @@ body {
   font-size: smaller;
   background-color: rgba(10, 10, 10);
   color: rgb(119, 118, 118);
+  cursor:default;
   
 }
 
 .footer a, p{
   font-weight: 600;
+  
+}
+
+a{
+  cursor: pointer;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: rgb(173, 173, 173);
 }

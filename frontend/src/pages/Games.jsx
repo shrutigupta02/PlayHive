@@ -6,7 +6,7 @@ export default function Games(){
     return(
         <div>
             <NavBar/>
-            <Background title="Discover games"/>
+            <Background />
             <Footer/>
         </div>
     )

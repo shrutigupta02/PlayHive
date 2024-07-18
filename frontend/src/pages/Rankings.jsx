@@ -6,7 +6,7 @@ export default function Rankings(){
     return(
         <div>
             <NavBar/>
-            <Background title='Top scorers!'/>
+            <Background />
             <Footer/>
         </div>
     )
