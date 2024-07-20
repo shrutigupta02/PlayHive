@@ -1,14 +1,54 @@
 import Background from "../components/Background";
 import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
-import GameCard from "../components/GameCard";
+import CardSlider from "../components/CardSlider";
+import GameDeck from "../components/GameDeck";
 
 export default function Games(){
+    const multiplayer = {
+        name: 'Multi-Player Games',
+        games: [
+            {
+                name: 'Ludo',
+                picture : 'src/assets/demo.png',
+            },
+            {
+                name: 'Any',
+                picture : 'src/assets/demo.png',
+            },
+            {
+                name: 'Blah',
+                picture : 'src/assets/demo.png',
+            }
+        ]
+    }
+
+    const double = {
+        name: 'Two player Games',
+        games: [
+            {
+                name: 'Tic-Tac-Toe',
+                picture : 'src/assets/demo.png',
+            },
+            {
+                name: 'Any',
+                picture : 'src/assets/demo.png',
+            },
+            {
+                name: 'Blah',
+                picture : 'src/assets/demo.png',
+            }
+        ]
+    }
+
+    const allGames = [multiplayer, double, double];
+
     return(
-        <div>
+        <div className="games">
             <NavBar/>
-            <Background />
-            <GameCard/>
+            <h1 className="heading">Discover top games:</h1>
+            
+            <GameDeck games = {allGames}/>
             <Footer/>
         </div>
     )

@@ -3,13 +3,16 @@
   src: url('./assets/fonts/FontdinerSwanky-Regular.ttf') format('truetype');
 }
 
-/* Apply the font to the body or specific elements */
 body {
   font-family: 'CustomFont', sans-serif;
+  background: radial-gradient(circle at center, #35a08e, #024e41 50%, #011d19 100%);
+  margin: 0;
+  padding: 0;
+  color: #A4FFF4;
+  overflow-x: hidden;
 }
 
-/*background image styling*/
-.background{
+.background {
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -17,96 +20,194 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: relative;
   color: #A4FFF4;
 }
 
-.background img{
+.background img {
   z-index: -2;
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-.background h1{
+.background h1 {
   position: absolute;
-  text-shadow: -2px 6px 5px rgba(0, 0, 0);
-  font-size: 6rem;
+  text-shadow: -2px 6px 5px rgba(0, 0, 0, 0.7);
+  font-size: 4rem;
 }
 
-
-.navbar{
+.navbar {
   display: flex;
   align-items: center;
-  position: absolute;
+  justify-content: space-between;
+  position: fixed;
   top: 0;
   left: 0;
-  width:100% ;
-  padding: 10px;
+  width: 100%;
+  height: 60px;
+  padding: 10px 20px;
   z-index: 1;
   color: rgb(240, 240, 240);
   background-color: rgba(10, 10, 10, 0.5);
 }
 
-.logo{
-  font-size:x-large;
-  text-shadow: -2px 6px 5px rgba(0, 0, 0);
+.logo {
+  font-size: 1.5rem;
+  text-shadow: -2px 6px 5px rgba(0, 0, 0, 0.7);
 }
 
-.right{
-  position: absolute;
-  right: 0;
+.right {
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
-.buttons, .search{
+.buttons {
   display: flex;
   align-items: center;
-  padding: 10px;
-  margin: 5px;
+  margin-right: 5px;
 }
 
-.buttons h2, .icon{
+.buttons h2:hover, .profile:hover, .logo:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.buttons h2, .icon {
   margin: 10px;
 }
 
-.search input{
+.search input {
   height: 80%;
   font-size: smaller;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px 10px;
   background-color: rgba(10, 10, 10, 0.5);
   color: rgb(200, 200, 200);
+  border: none;
+  border-radius: 5px;
 }
 
-.footer{
+.footer {
   width: 100%;
-  overflow: hidden;
   height: 100px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   font-size: smaller;
-  background-color: rgba(10, 10, 10);
+  background-color: rgba(10, 10, 10, 0.9);
   color: rgb(119, 118, 118);
-  cursor:default;
-  
+  cursor: default;
+  position: relative;
 }
 
-.footer a, p{
+.footer a, p {
   font-weight: 600;
-  
-}
-
-a{
-  cursor: pointer;
+  color: rgb(119, 118, 118);
 }
 
 .footer a:hover {
   text-decoration: underline;
   color: rgb(173, 173, 173);
+}
+
+.games {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(240, 240, 240);
+  padding-top: 60px;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 60px;
+  text-shadow: -1px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .right {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    display: none; /* Hide buttons by default */
+    width: 100%;
+  }
+
+  .buttons.open {
+    display: flex; /* Show buttons when menu is open */
+  }
+
+  .buttons h2, .icon {
+    margin: 10px 0;
+  }
+
+  .search input {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 1.5rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+    margin-top: 80px;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-icon {
+    display: none; /* Hide menu icon on larger screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .background h1 {
+    font-size: 2.5rem;
+  }
+
+  .navbar {
+    padding: 5px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-top: 100px;
+  }
+
+  .search input {
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+
+  .menu-icon {
+    font-size: 1.5rem;
+  }
 }

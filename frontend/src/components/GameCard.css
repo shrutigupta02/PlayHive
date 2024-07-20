@@ -1,17 +1,61 @@
-.game-card{
-   max-width: 300px; 
-   height: auto;
-   display: flex;
-   flex-direction: column;
+.game-card {
+    max-width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(42, 42, 42, 0.8);
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    
 }
 
-.game-info{
+.game-info {
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: #ffffff;
+    font-size: x-small;
 }
 
-.card-slider{
-    position: absolute;
+.deck {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.deck h1 {
+    font-size: 1.5em;
+    text-align: left;
+    margin-bottom: 10px;
+    color: rgb(240, 240, 240);
+}
+
+.slide-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-slider {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    overflow-x: scroll;
+    padding: 10px 0;
+}
+
+.card-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.card-slider::-webkit-scrollbar-thumb {
+    background: #0f473e;
+    border-radius: 10px;
+}
+
+.card-slider::-webkit-scrollbar-thumb:hover {
+    background: #012a24;
 }
