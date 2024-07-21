@@ -10,7 +10,7 @@ export default function Games(){
         games: [
             {
                 name: 'Ludo',
-                picture : 'src/assets/Untitled design.png',
+                picture : 'src/assets/demo.png',
             },
             {
                 name: 'Any',
