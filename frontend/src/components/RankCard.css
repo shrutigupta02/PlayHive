@@ -104,3 +104,9 @@
     gap: 20px;
     margin-top: 20px;
 }
+
+@media (max-width: 480px){
+    .rank-deck{
+        text-align: center;
+    }
+}

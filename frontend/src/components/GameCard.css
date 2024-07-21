@@ -72,3 +72,17 @@
     background: #012a24;
 }
 
+@media (max-width: 480px){
+    .deck h1{
+        text-align: center;
+        margin-left: 10px;
+        font-size: medium;
+    }
+
+    .card-slider{
+        margin-left: 10px;
+        font-size: medium;
+        flex-direction: column;
+    }
+
+}

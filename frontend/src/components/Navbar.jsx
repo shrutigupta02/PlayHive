@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import '../index.css'
 
 export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -26,13 +27,13 @@ export default function NavBar() {
     };
 
     return (
-        <div className="navbar">
+        <div className={`navbar ${menuOpen ? '' : 'close'}`}>
             <div className="logo">
                 <h1 onClick={() => handleRouting('/')}>PH</h1>
             </div>
 
-            <div className="right">
-                <div className={`buttons ${menuOpen ? 'open' : ''}`}>
+            <div className={`right  ${menuOpen ? 'open' : 'close'}`}>
+                <div className={`buttons ${menuOpen ? 'open' : 'close'}`}>
                     {buttons.map((button) => (
                         <h2 key={button.name} onClick={() => handleRouting(button.route)}>
                             {button.name}

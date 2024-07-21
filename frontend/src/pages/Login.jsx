@@ -15,7 +15,7 @@ export default function Login(){
         username: Yup.string().required('Username is required'),
         password: Yup.string()
           .required('Password is required')
-          .min(6, 'Password must be at least 6 characters'),
+          .min(68, 'Password must be at least 8 characters'),
       });
     
       const onSubmit = (values) => {
@@ -23,11 +23,11 @@ export default function Login(){
       };
 
     return(
-        <div>
+        <div className="login-page">
             <NavBar/>
             
 
-            <div className="formContainer">
+            <div className="formContainer login-container">
                 <h1>Welcome back!</h1>
                 <h2>Oh we missed you so. Login to see your high scores, create your cool profiles and play with your friends!</h2>
 
@@ -57,7 +57,7 @@ export default function Login(){
             )}
             </Formik>
             </div>
-            <Background/>
+
             <Footer/>
         </div>
     )
