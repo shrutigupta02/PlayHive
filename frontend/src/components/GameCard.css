@@ -11,13 +11,25 @@
     
 }
 
+.game-card:hover{
+    box-shadow: -5px 5px 10px rgb(26, 26, 26);
+    transform: scale(1.01);
+    transition: all 0.3s ease-out;
+}
+
 .game-info {
-    padding: 10px;
+    padding: 15px;
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
     color: #ffffff;
     font-size: x-small;
+}
+
+.play:hover{
+    transform: scale(1.5);
+    color: #2bb7a0;
+    transition: all 0.5s ease-out;
 }
 
 .deck {
@@ -59,3 +71,4 @@
 .card-slider::-webkit-scrollbar-thumb:hover {
     background: #012a24;
 }
+

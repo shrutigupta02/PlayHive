@@ -123,6 +123,7 @@ body {
   text-align: center;
   font-size: 2.5rem;
   margin-top: 60px;
+  margin-bottom: 20px;
   text-shadow: -1px 3px 5px rgba(0, 0, 0, 0.7);
 }
 
@@ -175,6 +176,7 @@ body {
   .heading {
     font-size: 2rem;
     margin-top: 80px;
+    margin-bottom: 20px;
   }
 }
 
