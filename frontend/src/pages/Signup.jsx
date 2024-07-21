@@ -62,7 +62,7 @@ export default function Signup(){
             
             <div className="formContainer">
             <h1>Sign Up</h1>
-            <h2>Hey, new pinch! ust kidding! Sign up to join our little world of madness. </h2>
+            <h2>Hey, new pinch! Just kidding! Sign up to join our little world of madness. </h2>
             <p>If you're not new, <a href="/login">login here</a></p>
             <Formik
                 initialValues={initialValues}
