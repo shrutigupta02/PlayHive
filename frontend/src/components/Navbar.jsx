@@ -40,18 +40,22 @@ export default function NavBar() {
                         </h2>
                     ))}
                 </div>
-                <SearchBar />
 
-                {isLoggedIn ? (
-                    <div className="profile">
-                        <AccountCircleIcon onClick={() => handleRouting('/profile')} />
+                <div className="utility">
+                    <SearchBar className="searchBar"/>
+
+                    {isLoggedIn ? (
+                        <div className="profile">
+                            <AccountCircleIcon onClick={() => handleRouting('/profile')} />
+                        </div>
+                    ) : (
+                        <div className="login">
+                            <h2 onClick={() => handleRouting('/login')}>Login</h2>
+                        </div>
+                    )}
                     </div>
-                ) : (
-                    <div className="login">
-                        <h2 onClick={() => handleRouting('/login')}>Login</h2>
-                    </div>
-                )}
-            </div>
+                </div>
+                
 
             <div className="menu-icon" onClick={toggleMenu}>
                 {menuOpen ? <CloseIcon /> : <MenuIcon />}

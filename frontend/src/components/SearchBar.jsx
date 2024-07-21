@@ -4,7 +4,7 @@ export default function SearchBar(){
     return(
         <div className='search' style={{display: 'flex', alignItems: 'center', marginLeft: '5px', marginRight: '5px'}}>
             <input type="text" placeholder="Search"/>
-            <div className="icon">
+            <div className="icon" style={{marginRight: '10px'}}>
                 <SearchIcon/>
             </div>
         </div>
