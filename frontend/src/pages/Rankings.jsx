@@ -9,7 +9,7 @@ export default function Rankings(){
         <div className="games">
             <NavBar/>
             <h1 className="heading">Our top scorers!</h1>
-            <h3>Play regularly to get featured on our leaderboard.</h3>
+            <p className="subheading">Play regularly to get featured on our leaderboard!</p>
             <RankDeck/>
             <Footer/>
         </div>
