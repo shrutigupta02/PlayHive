@@ -15,7 +15,7 @@ export default function NavBar() {
         { name: 'Rankings', route: '/rankings' }
     ];
 
-    let isLoggedIn = true;
+    let isLoggedIn = false;
 
     const handleRouting = (route) => {
         navigate(route);

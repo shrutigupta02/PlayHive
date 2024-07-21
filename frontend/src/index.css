@@ -246,6 +246,10 @@ body {
   display: none;
 }
 
+.login{
+  font-size: small;
+}
+
   .logo {
     font-size: 1rem;
     position: absolute;

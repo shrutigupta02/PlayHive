@@ -30,7 +30,7 @@ export default function Login(){
             <div className="formContainer login-container">
                 <h1>Welcome back!</h1>
                 <h2>Oh we missed you so. Login to see your high scores, create your cool profiles and play with your friends!</h2>
-
+                
             <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -55,7 +55,9 @@ export default function Login(){
                 </button>
                 </Form>
             )}
+            
             </Formik>
+            <p>If you're new here, <a href="/signup">Sign Up here.</a></p>
             </div>
 
             <Footer/>
