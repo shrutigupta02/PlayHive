@@ -12,7 +12,7 @@ export default function NavBar() {
     const navigate = useNavigate();
     const buttons = [
         { name: 'Home', route: '/' },
-        { name: 'Games', route: '/play' },
+        { name: 'Games', route: '/games' },
         { name: 'Rankings', route: '/rankings' }
     ];
 
