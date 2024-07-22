@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { useAuth } from '../AuthContext';
 import '../index.css'
 
 export default function NavBar() {
@@ -15,7 +16,7 @@ export default function NavBar() {
         { name: 'Rankings', route: '/rankings' }
     ];
 
-    let isLoggedIn = false;
+    const { isLoggedIn } = useAuth();
 
     const handleRouting = (route) => {
         navigate(route);

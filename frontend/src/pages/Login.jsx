@@ -4,23 +4,42 @@ import Footer from "../components/Footer";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './login.css';
+import { useNavigate } from "react-router-dom";
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import { fireBaseAuth } from "../../utils/firebase-config";
+import { useState } from "react";
 
 export default function Login(){
+    const navigate = useNavigate();
+    let [wrongPass, setWrongPass] = useState(false);
     const initialValues = {
-        username: '',
+        email: '',
         password: '',
       };
     
       const validationSchema = Yup.object({
-        username: Yup.string().required('Username is required'),
+        email: Yup.string().email('Invalid email format').required('Email is required'),
         password: Yup.string()
           .required('Password is required')
-          .min(68, 'Password must be at least 8 characters'),
+          .min(8, 'Password must be at least 8 characters'),
       });
     
       const onSubmit = (values) => {
         console.log('Form data', values);
+        handleLogin(values);
       };
+
+      const handleLogin = async(values) => {
+        const {email, password} = values;
+        try{
+            await signInWithEmailAndPassword(fireBaseAuth, email, password);
+            navigate('/');
+        }catch(e){
+            console.log(e);
+            setWrongPass(true);
+        }
+        
+      }
 
     return(
         <div className="login-page">
@@ -39,9 +58,9 @@ export default function Login(){
             {({ isValid, dirty }) => (
                 <Form className="form">
                 <div className="form-control">
-                    <label htmlFor="username">Username</label>
-                    <Field type="text" id="username" name="username" />
-                    <ErrorMessage name="username" component="div" className="error" />
+                    <label htmlFor="email">Email ID</label>
+                    <Field type="text" id="email" name="email" />
+                    <ErrorMessage name="email" component="div" className="error" />
                 </div>
 
                 <div className="form-control">
@@ -54,10 +73,11 @@ export default function Login(){
                     Submit
                 </button>
                 </Form>
+                
             )}
-            
             </Formik>
-            <p>If you're new here, <a href="/signup">Sign Up here.</a></p>
+            {wrongPass && <p style={{color:'red'}}>Invalid login details</p>}
+            <p >If you're new here, <a href="/signup">Sign Up here.</a></p>
             </div>
 
             <Footer/>

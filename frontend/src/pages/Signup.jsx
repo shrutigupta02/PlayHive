@@ -5,6 +5,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Select from 'react-select';
 import './login.css';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { fireBaseAuth } from "../../utils/firebase-config";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const countryOptions = [
     { value: '+91', label: 'India (+91)' },
@@ -19,6 +23,10 @@ const phoneRegExp = {
 };
 
 export default function Signup(){
+    const navigate = useNavigate(); 
+
+    let [userExists, setUserExists] = useState(false);
+
     const validationSchema = Yup.object().shape({
         firstName: Yup.string().required('First name is required'),
         lastName: Yup.string().required('Last name is required'),
@@ -50,10 +58,22 @@ export default function Signup(){
         phoneNumber: ''
     };
 
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, formikHelpers) => {
         console.log(values);
-
+        handleSignin(values, formikHelpers);
     };
+
+    const handleSignin = async (values, { resetForm }) => {
+        const {email, password} = values;
+        try{
+            await createUserWithEmailAndPassword(fireBaseAuth, email, password);
+            navigate('/');
+        }catch(e){
+            console.log(e);
+            setUserExists(true);
+            resetForm();
+        }
+    }
 
     return (
         <div className="sign-up-page">
@@ -64,10 +84,11 @@ export default function Signup(){
             <h1>Sign Up</h1>
             <h2>Hey, new pinch! Just kidding! Sign up to join our little world of madness. </h2>
             <p>If you're not new, <a href="/login">login here</a></p>
+            {userExists && <p style={{color:'red'}}>User with this Email ID already exists.</p>}
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={handleSubmit}
+                onSubmit={(values, formikHelpers) => handleSubmit(values, formikHelpers)}
             >
                 {({ dirty, setFieldValue }) => (
                     <Form className="form">
@@ -122,6 +143,7 @@ export default function Signup(){
                     </Form>
                 )}
             </Formik>
+            
         </div>
             
 

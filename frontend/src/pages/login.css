@@ -65,7 +65,7 @@
 }
   
   .form-control input {
-    width: 100%;
+    width: 90%;
     padding: 0.5rem;
     font-size: 1rem;
     background-color: rgba(0, 0, 0, 0.1);
@@ -102,4 +102,16 @@
     padding-left: 2.5px;
     padding-right: 2.5px;
     overflow-x: hidden;
+}
+
+@media (max-width: 480px){
+  .sign-up-page{
+    font-size: small;
+  }
+
+  .formContainer{
+    max-width: 300px;
+    margin: 5px;
+    font-size: medium;
+  }
 }
