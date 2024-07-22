@@ -53,16 +53,16 @@
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-  }
+}
   
   .form-control {
     margin-bottom: 1rem;
-  }
+}
   
   .form-control label {
     display: block;
     margin-bottom: 0.5rem;
-  }
+}
   
   .form-control input {
     width: 100%;
@@ -70,12 +70,12 @@
     font-size: 1rem;
     background-color: rgba(0, 0, 0, 0.1);
     color: #ccc;
-  }
+}
   
   .error {
     color: red;
     font-size: 0.875rem;
-  }
+}
   
   button {
     padding: 0.5rem 1rem;
@@ -85,12 +85,12 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
   
   button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-  }
+}
   
   .sign-up-page, .login-page{
     height: 100vh;
@@ -102,4 +102,4 @@
     padding-left: 2.5px;
     padding-right: 2.5px;
     overflow-x: hidden;
-  }
+}
