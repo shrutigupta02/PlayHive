@@ -6,7 +6,7 @@ export default function CardSlider({games}){
         <div className="card-slider">
             {
                 games.map((game) => (
-                    <GameCard name={game.name} image = {game.picture}/>
+                    <GameCard name={game.name} image = {game.picture} link = {game.link}/>
                 ))
             }
         </div>

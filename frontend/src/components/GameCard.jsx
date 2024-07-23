@@ -3,7 +3,7 @@ import { useAuth } from '../AuthContext';
 import { useNavigate } from 'react-router-dom';
 import './GameCard.css'
 
-export default function GameCard({name, image}){
+export default function GameCard({name, image, link}){
     const {isLoggedIn} = useAuth();
     const navigate = useNavigate();
 
@@ -11,6 +11,7 @@ export default function GameCard({name, image}){
         if(!isLoggedIn){
             navigate('/signup');
         }
+        navigate(link);
     }
 
     return(

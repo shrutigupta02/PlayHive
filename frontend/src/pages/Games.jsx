@@ -6,20 +6,13 @@ import GameDeck from "../components/GameDeck";
 
 export default function Games(){
     const multiplayer = {
-        name: 'Multi-Player Games',
+        name: 'Single-Player Games',
         games: [
             {
-                name: 'Ludo',
-                picture : 'src/assets/demo.png',
+                name: '2048',
+                picture : 'src/assets/2048.png',
+                link : '/games/2048'
             },
-            {
-                name: 'Any',
-                picture : 'src/assets/demo.png',
-            },
-            {
-                name: 'Blah',
-                picture : 'src/assets/demo.png',
-            }
         ]
     }
 
@@ -28,20 +21,13 @@ export default function Games(){
         games: [
             {
                 name: 'Tic-Tac-Toe',
-                picture : 'src/assets/demo.png',
+                picture : 'src/assets/petal-puzzle.avif',
             },
-            {
-                name: 'Any',
-                picture : 'src/assets/demo.png',
-            },
-            {
-                name: 'Blah',
-                picture : 'src/assets/demo.png',
-            }
+            
         ]
     }
 
-    const allGames = [multiplayer, double, double];
+    const allGames = [multiplayer, double];
 
     return(
         <div className="games">
