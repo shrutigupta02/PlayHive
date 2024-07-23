@@ -22,6 +22,8 @@ const TwoZeroFourEight = () => {
   ]);
 
   const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+
 
   const initialize = () => {
     let newGrid = [
@@ -33,6 +35,7 @@ const TwoZeroFourEight = () => {
     addNumber(newGrid);
     addNumber(newGrid);
     setData(newGrid);
+    setScore(0);
   };
 
   const addNumber = (newGrid) => {
@@ -64,7 +67,7 @@ const TwoZeroFourEight = () => {
   const swipeLeft = (dummy) => {
     let oldGrid = data;
     let newArray = cloneDeep(data);
-
+  
     for (let i = 0; i < 4; i++) {
       let b = newArray[i];
       let slow = 0;
@@ -97,6 +100,7 @@ const TwoZeroFourEight = () => {
       }
     }
     if (JSON.stringify(oldGrid) !== JSON.stringify(newArray)) {
+      setScore(score + getScore(newArray, oldGrid)); // Update the score
       addNumber(newArray);
     }
     if (dummy) {
@@ -105,11 +109,11 @@ const TwoZeroFourEight = () => {
       setData(newArray);
     }
   };
-
+  
   const swipeRight = (dummy) => {
     let oldData = data;
     let newArray = cloneDeep(data);
-
+  
     for (let i = 3; i >= 0; i--) {
       let b = newArray[i];
       let slow = b.length - 1;
@@ -142,6 +146,7 @@ const TwoZeroFourEight = () => {
       }
     }
     if (JSON.stringify(newArray) !== JSON.stringify(oldData)) {
+      setScore(score + getScore(newArray, oldData)); // Update the score
       addNumber(newArray);
     }
     if (dummy) {
@@ -150,6 +155,7 @@ const TwoZeroFourEight = () => {
       setData(newArray);
     }
   };
+  
 
   const swipeDown = (dummy) => {
     let b = cloneDeep(data);
@@ -185,6 +191,7 @@ const TwoZeroFourEight = () => {
       }
     }
     if (JSON.stringify(b) !== JSON.stringify(oldData)) {
+      setScore(score + getScore(b, oldData)); // Update the score
       addNumber(b);
     }
     if (dummy) {
@@ -193,6 +200,7 @@ const TwoZeroFourEight = () => {
       setData(b);
     }
   };
+  
 
   const swipeUp = (dummy) => {
     let b = cloneDeep(data);
@@ -228,6 +236,7 @@ const TwoZeroFourEight = () => {
       }
     }
     if (JSON.stringify(oldData) !== JSON.stringify(b)) {
+      setScore(score + getScore(b, oldData)); // Update the score
       addNumber(b);
     }
     if (dummy) {
@@ -236,6 +245,7 @@ const TwoZeroFourEight = () => {
       setData(b);
     }
   };
+  
 
   const checkIfGameOver = (grid) => {
     let tempData = cloneDeep(grid);
@@ -274,6 +284,22 @@ const TwoZeroFourEight = () => {
     }
   };
 
+  const getScore = (newGrid, oldGrid) => {
+    let score = 0;
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        if (newGrid[i][j] !== 0 && newGrid[i][j] !== oldGrid[i][j]) {
+          if (oldGrid[i][j] !== 0) {
+            score += newGrid[i][j];
+          }
+        }
+      }
+    }
+    return score;
+  };
+  
+  
+
   const restartGame = () => {
     setGameOver(false);
 
@@ -293,6 +319,12 @@ const TwoZeroFourEight = () => {
   return (
     <div className="tzfe-container">
       <ClearIcon className='close-game' onClick={() => navigate('/games')}/>
+      <div className='tzfe-score'>
+      <div className="current">
+        <h3>Score: {score}</h3>
+      </div>
+    </div>
+
       {gameOver && 
         <div className='game-over'>
           <h1>GAME OVER</h1>
