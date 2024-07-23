@@ -21,7 +21,8 @@ export default function Games(){
         games: [
             {
                 name: 'Tic-Tac-Toe',
-                picture : 'src/assets/petal-puzzle.avif',
+                picture : 'src/assets/tictactoe.png',
+                link: '/games/tictactoe'
             },
             
         ]

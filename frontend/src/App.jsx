@@ -7,6 +7,7 @@ import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import './index.css'
 import Profile from './pages/Profile';
 import Twozerofoureight from './games/2048/2048';
+import TicTacToe from './games/tic-tac-toe/TicTacToe';
 
 function App() {
 
@@ -19,8 +20,9 @@ function App() {
             <Route exact path = '/rankings' element={<Rankings/>}/>
             <Route exact path = '/login' element={<Login/>}/>
             <Route exact path = '/signup' element={<Signup/>}/>
-            <Route exact path = '/:id' element={<Profile/>}/>
+            <Route exact path = '/profile' element={<Profile/>}/>
             <Route exact path = '/games/2048' element={<Twozerofoureight/>}/>
+            <Route exact path = '/games/tictactoe' element={<TicTacToe/>}/>
           </Routes>
       </BrowserRouter>
     </>

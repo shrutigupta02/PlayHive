@@ -107,9 +107,16 @@ p{
   position: relative;
 }
 
-.footer a, p {
+.footer a, .footer p {
   font-weight: 600;
   color: rgb(119, 118, 118);
+}
+
+.footer h3{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  font-size: small;
+  margin: 3px;
 }
 
 .footer a:hover {
