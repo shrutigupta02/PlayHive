@@ -2,9 +2,13 @@ import './2048.css'
 import React, { useState, useEffect } from "react";
 import cloneDeep from "lodash.clonedeep";
 import Swipe from "react-easy-swipe";
-import { getColors } from "./util";  // Removed unused import
+import { getColors } from "./util";
+import {useNavigate} from 'react-router-dom';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const TwoZeroFourEight = () => {
+  const navigate = useNavigate();
+
   const UP_ARROW = 38;
   const DOWN_ARROW = 40;
   const LEFT_ARROW = 37;
@@ -19,15 +23,18 @@ const TwoZeroFourEight = () => {
 
   const [gameOver, setGameOver] = useState(false);
 
-  // Initialize
   const initialize = () => {
-    let newGrid = cloneDeep(data);
+    let newGrid = [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ];
     addNumber(newGrid);
     addNumber(newGrid);
     setData(newGrid);
   };
 
-  // AddNumber - Add an item
   const addNumber = (newGrid) => {
     let added = false;
     let gridFull = false;
@@ -44,15 +51,16 @@ const TwoZeroFourEight = () => {
       }
       if (attempts > 50) {
         gridFull = true;
-        let gameOverr = checkIfGameOver();
-        if (gameOverr) {
-          alert("Game Over");
-        }
+      }
+    }
+    if (added) {
+      setData(newGrid);
+      if (checkIfGameOver(newGrid)) {
+        setGameOver(true);
       }
     }
   };
 
-  // Swipe Left
   const swipeLeft = (dummy) => {
     let oldGrid = data;
     let newArray = cloneDeep(data);
@@ -229,28 +237,16 @@ const TwoZeroFourEight = () => {
     }
   };
 
-  const checkIfGameOver = () => {
-    let tempData = cloneDeep(data);
-    let isOver = true;
-
+  const checkIfGameOver = (grid) => {
+    let tempData = cloneDeep(grid);
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
-        if (tempData[i][j] === 0) {
-          isOver = false;
-          break;
-        }
-        if (i < 3 && tempData[i][j] === tempData[i + 1][j]) {
-          isOver = false;
-          break;
-        }
-        if (j < 3 && tempData[i][j] === tempData[i][j + 1]) {
-          isOver = false;
-          break;
-        }
+        if (tempData[i][j] === 0) return false;
+        if (i < 3 && tempData[i][j] === tempData[i + 1][j]) return false;
+        if (j < 3 && tempData[i][j] === tempData[i][j + 1]) return false;
       }
     }
-    setGameOver(isOver);
-    return isOver;
+    return true;
   };
 
   useEffect(() => {
@@ -278,6 +274,13 @@ const TwoZeroFourEight = () => {
     }
   };
 
+  const restartGame = () => {
+    setGameOver(false);
+
+    initialize();
+  };
+  
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -289,34 +292,44 @@ const TwoZeroFourEight = () => {
 
   return (
     <div className="tzfe-container">
-        <Swipe
-          onSwipeLeft={() => {
-            if (!gameOver) swipeLeft();
-          }}
-          onSwipeRight={() => {
-            if (!gameOver) swipeRight();
-          }}
-          onSwipeUp={() => {
-            if (!gameOver) swipeUp();
-          }}
-          onSwipeDown={() => {
-            if (!gameOver) swipeDown();
-          }}
-        >
-          <div className="board" >
-            {data.flat().map((item, index) => (
-              <div
-                className="cell"
-                key={index}
-                style={{backgroundColor: getColors(item)}}
-              >
-                <p>{item !== 0 ? item : ""}</p>
-              </div>
-            ))}
+      <ClearIcon className='close-game' onClick={() => navigate('/games')}/>
+      {gameOver && 
+        <div className='game-over'>
+          <h1>GAME OVER</h1>
+          <div className="tzfe-buttons">
+            <button style={{backgroundColor:'#00A96B'}} onClick={restartGame}>Restart</button>
+            <button style={{backgroundColor:'#004D40'}} onClick={()=> navigate('/games')}>Play other games.</button>
           </div>
-        </Swipe>
+        </div>
+      }
+
+      <Swipe
+        onSwipeLeft={() => {
+          if (!gameOver) swipeLeft();
+        }}
+        onSwipeRight={() => {
+          if (!gameOver) swipeRight();
+        }}
+        onSwipeUp={() => {
+          if (!gameOver) swipeUp();
+        }}
+        onSwipeDown={() => {
+          if (!gameOver) swipeDown();
+        }}
+      >
+        <div className="board">
+          {data.flat().map((item, index) => (
+            <div
+              className="cell"
+              key={index}
+              style={{backgroundColor: getColors(item)}}
+            >
+              <p>{item !== 0 ? item : ""}</p>
+            </div>
+          ))}
+        </div>
+      </Swipe>
     </div>
-    
   );
 };
 
