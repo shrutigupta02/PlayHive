@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
 import CardSlider from "../components/CardSlider";
 import GameDeck from "../components/GameDeck";
+import tzfe from '../assets/2048.png';
+import ttt from '../assets/tictactoe.png';
 
 export default function Games(){
     const multiplayer = {
@@ -10,7 +12,7 @@ export default function Games(){
         games: [
             {
                 name: '2048',
-                picture : 'src/assets/2048.png',
+                picture : tzfe,
                 link : '/games/2048'
             },
         ]
@@ -21,7 +23,7 @@ export default function Games(){
         games: [
             {
                 name: 'Tic-Tac-Toe',
-                picture : 'src/assets/tictactoe.png',
+                picture : ttt,
                 link: '/games/tictactoe'
             },
             
