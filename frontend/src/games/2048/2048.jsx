@@ -49,7 +49,7 @@ const TwoZeroFourEight = () => {
       let rand2 = Math.floor(Math.random() * 4);
       attempts++;
       if (newGrid[rand1][rand2] === 0) {
-        newGrid[rand1][rand2] = Math.random() > 0.5 ? 2 : 4;
+        newGrid[rand1][rand2] = Math.random() > 0.3 ? 2 : 4;
         added = true;
       }
       if (attempts > 50) {
