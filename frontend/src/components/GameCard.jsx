@@ -11,6 +11,7 @@ export default function GameCard({name, image, link}){
         if(!isLoggedIn){
             navigate('/signup');
         }
+        else
         navigate(link);
     }
 

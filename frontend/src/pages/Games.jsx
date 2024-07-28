@@ -5,8 +5,21 @@ import CardSlider from "../components/CardSlider";
 import GameDeck from "../components/GameDeck";
 import tzfe from '../assets/2048.png';
 import ttt from '../assets/tictactoe.png';
+import { useEffect } from "react";
+import axios from 'axios';
 
 export default function Games(){
+
+    useEffect(()=>{
+        axios.get('http://localhost:1234/games')
+        .then(result => {
+            console.log(result.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }, []);
+
     const multiplayer = {
         name: 'Single-Player Games',
         games: [

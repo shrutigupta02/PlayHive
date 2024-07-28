@@ -9,6 +9,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { fireBaseAuth } from "../../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios';
 
 const countryOptions = [
     { value: '+91', label: 'India (+91)' },
@@ -58,8 +59,13 @@ export default function Signup(){
         phoneNumber: ''
     };
 
-    const handleSubmit = (values, formikHelpers) => {
-        console.log(values);
+    const handleSubmit = async(values, formikHelpers) => {
+        try{
+            const response = await axios.post('http://localhost:1234/user', values);
+        }
+        catch(error){
+            console.error('Error saving user:', error);
+        }
         handleSignin(values, formikHelpers);
     };
 
