@@ -5,6 +5,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAuth } from '../AuthContext';
+import { fireBaseAuth } from "../../utils/firebase-config";
+import { signOut } from 'firebase/auth';
 import '../index.css'
 
 export default function NavBar() {
@@ -27,6 +29,11 @@ export default function NavBar() {
         setMenuOpen(!menuOpen);
     };
 
+    const handleLogOut = async()=>{
+        await signOut(fireBaseAuth);
+        navigate('/login');
+    }
+
     return (
         <div className={`navbar ${menuOpen ? '' : 'close'}`}>
             <div className="logo">
@@ -46,8 +53,8 @@ export default function NavBar() {
                     <SearchBar className="searchBar"/>
 
                     {isLoggedIn ? (
-                        <div className="profile">
-                            <AccountCircleIcon onClick={() => handleRouting('/profile')} />
+                        <div className="login">
+                            <h2 onClick={handleLogOut}>Log out</h2>
                         </div>
                     ) : (
                         <div className="login">
