@@ -13,7 +13,7 @@ export default function NavBar() {
     const buttons = [
         { name: 'Home', route: '/' },
         { name: 'Games', route: '/games' },
-        { name: 'Rankings', route: '/rankings' }
+
     ];
 
     const { isLoggedIn } = useAuth();
