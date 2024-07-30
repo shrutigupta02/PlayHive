@@ -100,7 +100,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 If you have any questions or suggestions, feel free to reach out:
 
 - **Email:** shrutiguptaindore02@gmail.com
-- **GitHub:** [yourusername](https://github.com/shrutigupta02)
+- **GitHub:** [shrutigupta02](https://github.com/shrutigupta02)
 
 ---
 
