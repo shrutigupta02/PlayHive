@@ -2,6 +2,8 @@
 
 PlayHive is a web-based gaming platform that brings together a collection of classic games in one place. Users can create an account, play games, and see their rankings for each game. The current version includes popular games like Tic Tac Toe, and 2048, with more games to be added soon.
 
+Live at: https://playhive.netlify.app
+
 ## Table of Contents
 
 - [Features](#features)
